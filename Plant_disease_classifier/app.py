@@ -7,7 +7,7 @@ from PIL import Image
 
 # Model definition
 class PlantDisease(nn.Module):
-  def __init__(self, num_classes, img_size = img_height):
+  def __init__(self, num_classes, img_size = 128):
     super().__init__()
 
     self.feature_extractor = nn.Sequential(
@@ -48,7 +48,7 @@ def load_model():
 @st.cache_resource
 def load_class_names():
   with open('class_names.txt', 'r') as f:
-    return [line.strip() for line in f'readlines()']
+    return [line.strip() for line in f.readlines()]
 
 
 # transforms
@@ -84,16 +84,16 @@ if uploaded_file is not None:
 
 
 # results
-st.success(f'Prediction: {predicted_class}')
-st.metric(label = 'Confidence', value = f'{confidence * 100:.2f}%')
+  st.success(f'Prediction: {predicted_class}')
+  st.metric(label = 'Confidence', value = f'{confidence * 100:.2f}%')
 
-st.subheader('Top 3 predictions')
-top3_probs, top3_indices = torch.topk(probabilities, 3, dim=1)
-for i in range(3):
-  idx = top3_indices[0][i].item()
-  prob = top3_probs[0][i].item()
-  st.progress(prob)
-  st.write(f'{i + 1}. {class_names[idx]} - {prob*100:.2f}%')
+  st.subheader('Top 3 predictions')
+  top3_probs, top3_indices = torch.topk(probabilities, 3, dim=1)
+  for i in range(3):
+    idx = top3_indices[0][i].item()
+    prob = top3_probs[0][i].item()
+    st.progress(prob)
+    st.write(f'{i + 1}. {class_names[idx]} - {prob*100:.2f}%')
 
 
 
