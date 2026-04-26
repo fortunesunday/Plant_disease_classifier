@@ -39,7 +39,7 @@ class PlantDisease(nn.Module):
 def load_model():
   device =torch.device('cuda' if torch.cuda.is_available() else 'cpu')
   model = PlantDisease(num_classes = 38, img_size = 128)
-  model.load_state_dict(torch.load('best_model.pth', map_location = device, weights_only = True))
+  model.load_state_dict(torch.load('Plant_disease_classifier/best_model.pth', map_location = device, weights_only = True))
   model.eval()
   return model.to(device), device
 
@@ -47,7 +47,7 @@ def load_model():
 # load class names
 @st.cache_resource
 def load_class_names():
-  with open('class_names.txt', 'r') as f:
+  with open('Plant_disease_classifier/class_names.txt', 'r') as f:
     return [line.strip() for line in f.readlines()]
 
 
