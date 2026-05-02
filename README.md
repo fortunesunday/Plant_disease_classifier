@@ -34,6 +34,9 @@ Plant diseases account for up to 40% of annual crop losses globally, contributin
 - Loss Function: CrossEntropyLoss
 - Optimizer: Adam
 ## WebApp Interface
+<img width="1280" height="348" alt="app_interface1" src="https://github.com/user-attachments/assets/adb22abb-ec76-4512-84aa-c24a3732d903" />
+<img width="1280" height="610" alt="app_interface2" src="https://github.com/user-attachments/assets/587c18f4-66d5-4a36-a8cc-08e5a7ad40a7" />
+
 
 ## **Training Process**
 - Image preprocessing: Resizing, ToTensor
